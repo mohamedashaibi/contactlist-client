@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import ContactList from './Components/Contact/ContactList';
+import Form from './Components/Form/Form';
+import axios from './axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { GET } from './Redux/Actions/Contact';
 
 function App() {
+  const selector = useSelector(state=>state.ContactReducer.contacts)
+
+  const [contacts, setContacts] = useState(selector)
+
+  const dispatcher = useDispatch()
+
+  useEffect(() => {
+    async function fetchData(){
+      dispatcher({type: GET})
+    }
+    fetchData()
+  },[dispatcher])
+   
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {console.log("Contacts in app.js = "+selector)}
+      <Form/>
+      <ContactList contacts={contacts}/>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+.contact-form{
+    height: 40vh;
+    margin-bottom:5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  .contact-form input{
+    width: 30%;
+    margin: 5px;
+    border-radius: 10px;
+  }
+  .contact-form input[type="button"]{
+    background: blue;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+  }
